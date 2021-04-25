@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TiendaServicios.Api.Libro.Persistencia;
 
 namespace TiendaServicios.Api.Libro
 {
@@ -23,6 +25,10 @@ namespace TiendaServicios.Api.Libro
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<ContextoLibreria>(opt =>
+            {
+                opt.UseSqlServer(Configuration.GetConnectionString("ConexionDB"));//Creo conexion a sql server
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
