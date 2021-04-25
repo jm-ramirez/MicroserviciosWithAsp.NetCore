@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +28,7 @@ namespace TiendaServicios.Api.Autor
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddRazorPages();
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Nuevo>()); //inicializo FluentValidation dentro del proyecto.
             services.AddDbContext<ContextoAutor>(options =>
             {
                 options.UseNpgsql(Configuration.GetConnectionString("ConexionDatabase"));
