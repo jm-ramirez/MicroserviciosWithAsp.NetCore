@@ -1,3 +1,4 @@
+using AutoMapper;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -35,6 +36,8 @@ namespace TiendaServicios.Api.Libro
             });
 
             services.AddMediatR(typeof(Nuevo.Manejador).Assembly); //Inicializo el servicio de mediatr para que funcione la inyeccion.
+
+            services.AddAutoMapper(typeof(Consulta.Ejecuta)); //Instancio servicio AutoMapper
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
