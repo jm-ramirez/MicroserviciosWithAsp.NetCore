@@ -22,9 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Persistencia\" />
     <Folder Include="Aplicacion\" />
-    <Folder Include="Modelo\" />
   </ItemGroup>
   
 </Project>
