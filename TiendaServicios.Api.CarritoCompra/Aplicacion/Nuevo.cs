@@ -59,7 +59,7 @@ namespace TiendaServicios.Api.CarritoCompra.Aplicacion
                     return Unit.Value;
                 }
 
-                throw new Exception("No se pudo insertar el detalle del carrito de compras.")
+                throw new Exception("No se pudo insertar el detalle del carrito de compras.");
             }
         }
     }
