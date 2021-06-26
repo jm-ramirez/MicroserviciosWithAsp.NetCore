@@ -72,7 +72,7 @@ namespace TiendaServicios.Api.Libro.Tests
         [Fact]
         public async void GetLibros()
         {
-            System.Diagnostics.Debugger.Launch();
+            //System.Diagnostics.Debugger.Launch();
             //Que metodo dentro de mi microservice libro se esta encargando
             //de realizar la consulta de libros de la base de datos???
 
@@ -100,6 +100,29 @@ namespace TiendaServicios.Api.Libro.Tests
             var lista = await manejador.Handle(request, new System.Threading.CancellationToken());
 
             Assert.True(lista.Any());
+        }
+
+        [Fact]
+        public async void GuardarLibro()
+        {
+            System.Diagnostics.Debugger.Launch();
+
+            var options = new DbContextOptionsBuilder<ContextoLibreria>()
+                .UseInMemoryDatabase(databaseName: "BaseDatosLibro")
+                .Options;
+
+            var contexto = new ContextoLibreria(options);
+
+            var request = new Nuevo.Ejecuta();
+            request.Titulo = "Libro de Microservice";
+            request.AutorLibro = Guid.Empty;
+            request.FechaPublicacion = DateTime.Now;
+
+            var manejador = new Nuevo.Manejador(contexto);
+
+            var libro = await manejador.Handle(request, new System.Threading.CancellationToken());
+
+            Assert.True(libro != null);
         }
     }
 }
