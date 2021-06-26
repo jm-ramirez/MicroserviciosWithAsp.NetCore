@@ -18,6 +18,7 @@ namespace TiendaServicios.Api.Libro.Aplicacion
             public DateTime? FechaPublicacion { get; set; }
             public Guid? AutorLibro { get; set; }
         }
+
         public class EjecutaValidacion : AbstractValidator<Ejecuta>
         {
             public EjecutaValidacion()
@@ -27,6 +28,7 @@ namespace TiendaServicios.Api.Libro.Aplicacion
                 RuleFor(x => x.AutorLibro).NotEmpty();
             }
         }
+
         public class Manejador : IRequestHandler<Ejecuta>
         {
             private readonly ContextoLibreria _contexto;
